@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  # TODO: for
+  nodejs:
+    container_name: nodejs
+    restart: always
+    build: nodejs-typescript
+    environment:
+      - NODE_ENV=development
+      - PORT={{cookiecutter.port}}
+      - DEBUG=true
+      - PRIVATE_KEY="example-key"
+      - SOCKET_TIMEOUT=2000
+{%- if cookiecutter.use_sentry == "y" %}
+      - SENTRY_DSN="sentry-url"
+{%- endif %}
+    volumes:
+      - "./:/usr/src/app"
+    ports:
+      - {{cookiecutter.port}}:{{cookiecutter.port}}
+      - 9229:9229
+    networks:
+      - network_private
