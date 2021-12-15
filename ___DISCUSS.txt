@@ -1,0 +1,3 @@
+- Se remover os Controllers os UseCases terão de lidar com o request
+- O UsersRepository estava extendendo do Repository do TypeORM , e desta forma ele repassava os métodos do TypeORM, ao invés de disponibilizar somente os métodos implementados nele
+- No PR tem sugestão de user o ENV ao inves do ormconfig.json, mas como padrão o CLI do TypeORM procura o arquivo .env na raiz do projeto, e os arquivos .env estão na pasta /config, então teria de ver se tem alguma config que faça o CLI pegar o .env de uma pasta
