@@ -1,8 +1,7 @@
 import { User } from 'api/auth/models/User'
 import { encrypt } from 'api/core/crypto'
-import { getCustomRepository } from 'api/core/framework/orm'
-import UsersRepository from 'api/auth/repositories/usersRepository'
 import { AppError } from 'errors/AppError'
+import UsersRepository from 'api/auth/repositories/UsersRepository'
 
 interface Request {
   name: string
@@ -13,21 +12,21 @@ interface Request {
 
 class SignupUseCase {
   async execute({ name, email, password, birthday }: Request): Promise<User> {
-    const signupRepository = getCustomRepository(UsersRepository)
+    const usersRepository = new UsersRepository()
 
-    const userAlreadyexists = await signupRepository.findByEmail(email)
-
-    if (userAlreadyexists) {
-      throw new AppError('This email already booked')
+    if (await usersRepository.findByEmail(email)) {
+      throw new AppError('This email is already booked.')
     }
 
-    const passwordHash = await encrypt({ data: password, strength: 8 })
+    const user = new User()
+    user.name = name
+    user.email = email
+    user.password = await encrypt({ data: password, strength: 8 })
+    user.birthday = birthday
 
-    const user = signupRepository.create({ name, email, password: passwordHash, birthday })
+    const userCreated = usersRepository.create(user)
 
-    await signupRepository.save(user)
-
-    return user
+    return userCreated
   }
 }
 
