@@ -1,14 +1,25 @@
-import { EntityRepository, Repository } from 'api/core/framework/orm'
+import { EntityRepository, getRepository, Repository } from 'api/core/framework/orm'
 import { User } from 'api/auth/models'
 
 @EntityRepository(User)
-class UsersRepository extends Repository<User> {
+class UsersRepository {
   async findByEmail(email: string): Promise<User | null> {
-    const findEmail = await this.findOne({
+    const repository = getRepository(User)
+
+    const findEmail = await repository.findOne({
       where: { email },
     })
 
     return findEmail || null
+  }
+
+  async create(user: User): Promise<User | null> {
+    const repository = getRepository(User)
+
+    const userCreated = repository.create(user)
+    await repository.save(user)
+
+    return userCreated || null
   }
 }
 
