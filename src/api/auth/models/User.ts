@@ -1,11 +1,6 @@
-import {
-  ModelBase,
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'api/core/framework/orm'
+import { ModelBase, Entity, Column, CreateDateColumn, UpdateDateColumn } from 'api/core/framework/orm'
+import { PrimaryColumn } from 'typeorm'
+import { v4 as uuid } from 'uuid'
 
 export interface UserData {
   id: string
@@ -16,7 +11,7 @@ export interface UserData {
 
 @Entity('users')
 class User extends ModelBase {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   id: string
 
   @Column()
@@ -36,6 +31,13 @@ class User extends ModelBase {
 
   @UpdateDateColumn()
   updated_at: Date
+
+  constructor() {
+    super()
+    if (!this.id) {
+      this.id = uuid()
+    }
+  }
 
   serializer(user: UserData): UserData {
     const { id, name, email, birthday } = user
