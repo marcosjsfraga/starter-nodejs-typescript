@@ -1,4 +1,4 @@
-import { EntityRepository, getRepository, Repository } from 'api/core/framework/orm'
+import { EntityRepository, getRepository } from 'api/core/framework/orm'
 import { User } from 'api/auth/models'
 
 @EntityRepository(User)
