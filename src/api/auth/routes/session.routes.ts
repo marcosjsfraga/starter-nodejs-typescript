@@ -1,4 +1,4 @@
-import { Router } from 'api/core/routes'
+import { Router } from '../../../api/core/routes'
 import { SessionController } from '../useCases/session/SessionController'
 
 const sessionRouter = Router()

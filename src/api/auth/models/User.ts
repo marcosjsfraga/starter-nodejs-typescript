@@ -1,4 +1,4 @@
-import { ModelBase, Entity, Column, CreateDateColumn, UpdateDateColumn } from 'api/core/framework/orm'
+import { ModelBase, Entity, Column, CreateDateColumn, UpdateDateColumn } from '../../../api/core/framework/orm'
 import { PrimaryColumn } from 'typeorm'
 import { v4 as uuid } from 'uuid'
 

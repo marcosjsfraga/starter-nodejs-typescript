@@ -1,5 +1,5 @@
-import { Router } from 'api/core/routes'
-import SignupController from 'api/auth/useCases/signup/SignupController'
+import { Router } from '../../../api/core/routes'
+import SignupController from '../../../api/auth/useCases/signup/SignupController'
 
 const signupRoutes = Router()
 const signupController = new SignupController()
