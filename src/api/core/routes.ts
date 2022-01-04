@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express'
 
-import { sessionRouter, signupRoutes } from '../../api/auth/routes'
+import { sessionRouter, signupRoutes } from '@api/auth/routes'
 
 const routes = Router()
 

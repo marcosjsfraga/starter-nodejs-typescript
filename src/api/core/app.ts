@@ -1,8 +1,7 @@
 import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
 import SocketIO from 'socket.io'
-import { resolvers, typeDefs } from '../../interfaces/graphql'
-
+import { resolvers, typeDefs } from '@interfaces/graphql'
 import '../../database'
 
 let app: Application | null = null

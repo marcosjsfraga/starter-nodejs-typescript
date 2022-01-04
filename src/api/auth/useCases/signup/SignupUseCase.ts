@@ -1,7 +1,7 @@
-import { User } from '../../../../api/auth/models/User'
-import { encrypt } from '../../../../api/core/crypto'
-import { AppError } from '../../../../errors/AppError'
-import UsersRepository from '../../../../api/auth/repositories/UsersRepository'
+import { User } from '@api/auth/models/User'
+import { encrypt } from '@api/core/crypto'
+import { AppError } from '@errors/AppError'
+import UsersRepository from '@api/auth/repositories/UsersRepository'
 import messages from '../../../core/messages'
 
 interface Request {

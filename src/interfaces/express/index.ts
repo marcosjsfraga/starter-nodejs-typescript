@@ -3,8 +3,8 @@ import 'reflect-metadata'
 import express from 'express'
 import cors from 'cors'
 
-import { routes, Request, Response, NextFunction } from '../../api/core/routes'
-import { AppError } from '../../errors/AppError'
+import { routes, Request, Response, NextFunction } from '@api/core/routes'
+import { AppError } from '@errors/AppError'
 
 const application = express()
 
