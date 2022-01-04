@@ -21,21 +21,9 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "@api/*": [
-        "api/*"
-      ],
-      "@config/*": [
-        "config/*"
-      ],
-      "@database/*": [
-        "database/*"
-      ],
-      "@errors/*": [
-        "errors/*"
-      ],
-      "@interfaces/*": [
-        "interfaces/*"
-      ],
+      "*": [
+        "*"
+      ]
     },
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
