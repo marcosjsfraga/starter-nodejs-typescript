@@ -1,9 +1,9 @@
-import { User, UserData } from '../../../../api/auth/models'
-import { compare } from '../../../../api/core/crypto'
-import { generateJwtToken } from '../../../../api/core/jwt'
-import { AppError } from '../../../../errors/AppError'
-import { getCustomRepository } from '../../../../api/core/framework/orm'
-import UsersRepository from '../../../../api/auth/repositories/usersRepository'
+import { User, UserData } from 'api/auth/models'
+import { compare } from 'api/core/crypto'
+import { generateJwtToken } from 'api/core/jwt'
+import { AppError } from 'errors/AppError'
+import { getCustomRepository } from 'api/core/framework/orm'
+import UsersRepository from 'api/auth/repositories/usersRepository'
 
 interface Request {
   email: string

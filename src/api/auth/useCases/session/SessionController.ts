@@ -1,4 +1,4 @@
-import { Request, Response } from '../../../../api/core/routes'
+import { Request, Response } from 'api/core/routes'
 import { SessionUseCase } from './SessionUseCase'
 
 class SessionController {

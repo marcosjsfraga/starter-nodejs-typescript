@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import request from 'supertest'
-import '../../../../database'
-import application from '../../../../interfaces/express'
+import 'database'
+import application from 'interfaces/express'
 
 const NAME = 'John Doe'
 const EMAIL = 'john.doe@example.com'

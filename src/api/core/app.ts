@@ -1,8 +1,8 @@
 import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
 import SocketIO from 'socket.io'
-import { resolvers, typeDefs } from '../../interfaces/graphql'
-import '../../database'
+import { resolvers, typeDefs } from 'interfaces/graphql'
+import 'database'
 
 let app: Application | null = null
 
@@ -17,7 +17,7 @@ class Application {
     this.project = 'project_name'
     this.config().then(async () => {
       // INTERFACES
-      const { http, socketIO } = await import('../../interfaces')
+      const { http, socketIO } = await import('interfaces')
       this.http = http
       this.io = socketIO
       // API ROUTES - graphQL is on /graphql
@@ -40,7 +40,7 @@ class Application {
   }
 
   private async config(): Promise<void> {
-    await import('../../config/env')
+    await import('config/env')
   }
 }
 
