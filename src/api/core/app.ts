@@ -28,6 +28,7 @@ class Application {
         typeDefs,
         resolvers,
       })
+      await this.server.start()
 
       // APPLY EXPRESS
       this.server.applyMiddleware({
