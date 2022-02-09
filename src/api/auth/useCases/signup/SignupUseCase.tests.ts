@@ -28,7 +28,7 @@ describe('Signup', () => {
       birthday: BIRTHDAY,
     })
 
-    console.log('- BODY -', response.body)
+    // console.log('- BODY -', response.body)
 
     expect(response.statusCode).toEqual(200)
   })
