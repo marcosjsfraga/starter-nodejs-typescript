@@ -7,8 +7,6 @@ import bodyParser from 'body-parser'
 //  import * as Sentry from '@sentry/node'
 //  {%- endif %}
 
-import { appError } from 'middlewares/AppError'
-
 const application: express.Application = express()
 
 // {% if cookiecutter.use_sentry == "y" %}
@@ -21,8 +19,6 @@ const application: express.Application = express()
 application.use(cors())
 application.use(bodyParser.urlencoded({ extended: true }))
 application.use(bodyParser.json())
-
-application.use(appError)
 
 process.stdout.write(`Loaded => express\n`)
 
