@@ -2,7 +2,8 @@ import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
 import SocketIO from 'socket.io'
 import { resolvers, typeDefs } from 'interfaces/graphql'
-import 'database'
+import { routes } from 'api/core/routes'
+// import 'database'
 
 let app: Application | null = null
 
@@ -21,7 +22,7 @@ class Application {
       this.http = http
       this.io = socketIO
       // API ROUTES - graphQL is on /graphql
-      // routes(http)
+      routes(http)
 
       // CREATE APOLLO SERVER
       this.server = new ApolloServer({

@@ -2,26 +2,27 @@ import 'express-async-errors'
 import 'reflect-metadata'
 import express from 'express'
 import cors from 'cors'
+import bodyParser from 'body-parser'
+//  {%- if cookiecutter.use_sentry == "y" %}
+//  import * as Sentry from '@sentry/node'
+//  {%- endif %}
 
-import { routes, Request, Response, NextFunction } from 'api/core/routes'
-import { AppError } from 'errors/AppError'
+import { appError } from 'middlewares/AppError'
 
-const application = express()
+const application: express.Application = express()
+
+// {% if cookiecutter.use_sentry == "y" %}
+//  // SENTRY - init before all middlewares
+//  Sentry.init({ dsn: process.env.SENTRY_DSN })
+//  application.use(Sentry.Handlers.requestHandler())
+//  {% endif %}
+// MIDDLEWARES
 
 application.use(cors())
-application.use(express.json())
-application.use(routes)
+application.use(bodyParser.urlencoded({ extended: true }))
+application.use(bodyParser.json())
 
-application.use((err: Error, request: Request, response: Response, next: NextFunction) => {
-  if (err instanceof AppError) {
-    return response.status(err.statusCode).json({ message: err.message })
-  }
-
-  return response.status(500).json({
-    status: 'error',
-    message: `internal server error - ${err.message}`,
-  })
-})
+application.use(appError)
 
 process.stdout.write(`Loaded => express\n`)
 

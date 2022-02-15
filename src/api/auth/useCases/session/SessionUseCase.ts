@@ -4,6 +4,7 @@ import { generateJwtToken } from 'api/core/jwt'
 import { AppError } from 'errors/AppError'
 import { getCustomRepository } from 'api/core/framework/orm'
 import UsersRepository from 'api/auth/repositories/usersRepository'
+import messages from 'api/core/messages'
 
 interface Request {
   email: string
@@ -21,15 +22,11 @@ class SessionUseCase {
 
     const userFiltered = await usersReposiotry.findByEmail(email)
 
-    if (!userFiltered) {
-      throw new AppError('Email or password incorrect')
-    }
+    if (!userFiltered) throw new AppError(messages.INCORRECT_CREDENTIALS)
 
     const passswordMatch = await compare(password, userFiltered.password)
 
-    if (!passswordMatch) {
-      throw new AppError('Email or password incorrect')
-    }
+    if (!passswordMatch) throw new AppError(messages.INCORRECT_CREDENTIALS)
 
     const user = new User()
 

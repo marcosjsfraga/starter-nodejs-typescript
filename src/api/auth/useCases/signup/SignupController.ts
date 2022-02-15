@@ -1,7 +1,7 @@
 import { Request, Response } from 'api/core/routes'
 import SignupUseCase from './SignupUseCase'
 
-class SignupController {
+export class SignupController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { name, email, password, birthday } = request.body
 
@@ -12,5 +12,3 @@ class SignupController {
     return response.status(200).json(user)
   }
 }
-
-export default SignupController

@@ -4,4 +4,5 @@ export default {
   PASSWORD_IS_EMPTY: 'Password is empty.',
   BIRTHDAY_IS_EMPTY: 'Birthday is empty.',
   EMAIL_ALREADY_EXISTS: 'Email already exists.',
+  INCORRECT_CREDENTIALS: 'Incorrect credentials',
 }
